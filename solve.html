@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <script>
+    // 调用prompt函数获取a, b, c
+    var aStr = prompt("请输入系数a");
+    var bStr = prompt("请输入系数b");
+    var cStr = prompt("请输入系数c");
+
+    // 将输入转换为数字
+    var a = parseFloat(aStr);
+    var b = parseFloat(bStr);
+    var c = parseFloat(cStr);
+
+    // 计算判别式delta
+    var delta = b * b - 4 * a * c;
+
+    // 计算方程的根
+    var x1 = (-b + Math.sqrt(delta)) / (2 * a);
+    var x2 = (-b - Math.sqrt(delta)) / (2 * a);
+
+    // 使用alert告知用户结果
+    alert("方程的根为 x1 = " + x1 + "， x2 = " + x2);
+
+    // 使用console.log输出结果
+    console.log("方程的根为 x1 = " + x1 + "， x2 = " + x2);
+  </script>
+
+</body>
+
+</html>
