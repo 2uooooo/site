@@ -1,0 +1,53 @@
+import tkinter as tk
+from tkinter import messagebox
+import cmath
+
+def solve_quadratic():
+    try:
+        a = float(entry_a.get())
+        b = float(entry_b.get())
+        c = float(entry_c.get())
+        discriminant = (b ** 2) - (4 * a * c)
+        if discriminant > 0:
+            sol1 = (-b + cmath.sqrt(discriminant)) / (2 * a)
+            sol2 = (-b - cmath.sqrt(discriminant)) / (2 * a)
+            solution_area.config(text=f"x1={sol1.real}, x2={sol2.real}")
+        elif discriminant == 0:
+            sol = -b / (2 * a)
+            solution_area.config(text=f"x = {sol.real}")
+        else:
+            sol1 = (-b + cmath.sqrt(discriminant)) / (2 * a)
+            sol2 = (-b - cmath.sqrt(discriminant)) / (2 * a)
+            solution_area.config(text=f"x1={sol1}, x2={sol2}")
+    except ValueError:
+        messagebox.showerror("Error", "Please enter valid numbers for coefficients.")
+
+
+root = tk.Tk()
+root.title("Quadratic Equation Solver")
+
+# 系数输入框
+label_a = tk.Label(root, text="a:")
+label_a.grid(row=0, column=0)
+entry_a = tk.Entry(root)
+entry_a.grid(row=0, column=1)
+
+label_b = tk.Label(root, text="b:")
+label_b.grid(row=0, column=2)
+entry_b = tk.Entry(root)
+entry_b.grid(row=0, column=3)
+
+label_c = tk.Label(root, text="c:")
+label_c.grid(row=0, column=4)
+entry_c = tk.Entry(root)
+entry_c.grid(row=0, column=5)
+
+# 求解按钮
+solve_button = tk.Button(root, text="Solve", command=solve_quadratic)
+solve_button.grid(row=1, columnspan=6)
+
+# 解显示区域
+solution_area = tk.Label(root, text="Solution area")
+solution_area.grid(row=2, columnspan=6)
+
+root.mainloop()
